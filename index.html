@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel educativo de prevención y monitoreo inspirado en Mi Teleférico de La Paz y El Alto.">
+  <title>SIMTELE-WEB | Mi Teleférico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topbar" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark">MT</span>
+      <span><strong>SIMTELE<span>WEB</span></strong><small>MI TELEFÉRICO · PANEL EDUCATIVO</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#emergencia">Emergencia</a>
+      <a href="#mantenimiento">Mantenimiento</a>
+      <a href="#viento">Viento</a>
+      <a href="#sensores">Sensores</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="live-dot"></span> SIMULADOR ACADÉMICO · PROGRAMACIÓN WEB I</span>
+        <h1>Monitoreo inteligente<br><span>de Mi Teleférico</span></h1>
+        <p>Un panel interactivo para practicar cálculos, registros y validaciones mediante situaciones hipotéticas del transporte por cable.</p>
+        <a class="btn btn-light" href="#panel">Explorar el panel <span>↓</span></a>
+        <p class="hero-note">Proyecto educativo. No representa el sistema operativo real de Mi Teleférico.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="mountain mountain-back"></div>
+        <div class="mountain mountain-front"></div>
+        <div class="cable"></div>
+        <div class="cabin cabin-one"><span></span></div>
+        <div class="cabin cabin-two"><span></span></div>
+        <div class="tower"><i></i><b></b></div>
+        <div class="cityline"></div>
+      </div>
+    </section>
+
+    <section class="dashboard section-wrap" id="panel">
+      <div class="section-heading">
+        <div><span class="eyebrow dark">CENTRO DE CONTROL EDUCATIVO</span><h2>Panel general</h2></div>
+        <span class="simulation-tag">● MODO SIMULACIÓN</span>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon red">⚠</span><div><small>Distancia calculada</small><strong id="statDistance">— m</strong><span>Último cálculo</span></div></article>
+        <article class="stat-card"><span class="stat-icon amber">⚙</span><div><small>Componentes registrados</small><strong id="statMaintenance">0</strong><span>Lista de mantenimiento</span></div></article>
+        <article class="stat-card"><span class="stat-icon green">≋</span><div><small>Promedio del viento</small><strong id="statWind">— km/h</strong><span>Últimas mediciones</span></div></article>
+        <article class="stat-card"><span class="stat-icon blue">⌁</span><div><small>Sensores válidos</small><strong id="statSensors">0</strong><span>Registros correctos</span></div></article>
+      </div>
+      <div class="notice"><strong>Nota importante:</strong> los umbrales de este panel son ficticios y sirven únicamente para aprender programación. No deben utilizarse para tomar decisiones reales de seguridad u operación.</div>
+    </section>
+
+    <section class="module-section section-wrap" id="emergencia">
+      <div class="module-heading">
+        <span class="module-number red-bg">01</span>
+        <div><span class="eyebrow dark">MÓDULO 01</span><h2>Detención de emergencia</h2><p>Estimación de la distancia recorrida durante el tiempo de reacción.</p></div>
+      </div>
+      <div class="module-card two-columns">
+        <form id="emergencyForm" class="form-panel">
+          <h3>Datos de la simulación</h3>
+          <p class="helper">Introduce la velocidad de la cabina y el tiempo de reacción hipotético.</p>
+          <label for="speed">Velocidad (km/h)</label>
+          <input type="number" id="speed" min="0.1" max="120" step="0.1" placeholder="Ej. 72" required>
+          <small class="field-help">Escribe un valor mayor que 0 y hasta 120 km/h.</small>
+          <label for="reactionTime">Tiempo de reacción (segundos)</label>
+          <input type="number" id="reactionTime" min="0.1" max="30" step="0.1" placeholder="Ej. 3" required>
+          <small class="field-help">Escribe un valor mayor que 0 y hasta 30 segundos.</small>
+          <button class="btn btn-red" type="submit">Calcular distancia <span>→</span></button>
+          <p class="form-message" id="emergencyMessage" role="status"></p>
+        </form>
+        <div class="result-panel red-panel">
+          <span class="result-kicker">RESULTADO DEL CÁLCULO</span>
+          <div class="result-number" id="distanceResult">— <small>metros</small></div>
+          <p id="distanceExplanation">Completa los datos y presiona “Calcular distancia”.</p>
+          <div class="formula-box"><strong>Fórmula utilizada</strong><code>d = (v / 3.6) × t</code><small>v = velocidad en km/h · t = tiempo en segundos</small></div>
+          <div class="threshold-info"><strong>Umbrales ficticios de esta práctica</strong><span>Hasta 30 m: nivel bajo · Más de 30 y hasta 60 m: precaución · Más de 60 m: alerta didáctica.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-section section-wrap" id="mantenimiento">
+      <div class="module-heading">
+        <span class="module-number amber-bg">02</span>
+        <div><span class="eyebrow dark">MÓDULO 02</span><h2>Registro de mantenimiento</h2><p>Control didáctico de componentes y sus estados de revisión.</p></div>
+      </div>
+      <div class="module-card">
+        <form id="maintenanceForm" class="maintenance-form">
+          <div><label for="component">Nombre del componente</label><input id="component" type="text" maxlength="60" placeholder="Ej. Motor de estación" required></div>
+          <div><label for="usageHours">Horas de uso</label><input id="usageHours" type="number" min="0" max="100000" step="0.1" placeholder="Ej. 120" required></div>
+          <div><label for="maintenanceStatus">Estado</label><select id="maintenanceStatus" required><option value="">Seleccionar estado</option><option value="Normal">Normal</option><option value="Revisión">Revisión</option><option value="Urgente">Urgente</option></select></div>
+          <button class="btn btn-amber" type="submit">＋ Agregar registro</button>
+        </form>
+        <p class="form-message" id="maintenanceMessage" role="status"></p>
+        <div class="table-heading"><div><h3>Componentes registrados</h3><p>Los registros aparecen automáticamente en esta tabla.</p></div><span class="count-pill" id="maintenanceCount">0 registros</span></div>
+        <div class="table-scroll"><table><thead><tr><th>#</th><th>Componente</th><th>Horas de uso</th><th>Estado</th><th>Acción</th></tr></thead><tbody id="maintenanceTable"><tr class="empty-row"><td colspan="5">Todavía no hay componentes registrados.</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="module-section section-wrap" id="viento">
+      <div class="module-heading">
+        <span class="module-number green-bg">03</span>
+        <div><span class="eyebrow dark">MÓDULO 03</span><h2>Viento y oscilación</h2><p>Analiza cinco mediciones simuladas de intensidad del viento.</p></div>
+      </div>
+      <div class="module-card two-columns">
+        <form id="windForm" class="form-panel">
+          <h3>Registrar cinco mediciones</h3>
+          <p class="helper">Introduce cinco valores en km/h para realizar el análisis.</p>
+          <div class="wind-inputs">
+            <div><label for="wind1">Medición 1</label><input id="wind1" type="number" min="0" max="300" step="0.1" placeholder="10" required></div>
+            <div><label for="wind2">Medición 2</label><input id="wind2" type="number" min="0" max="300" step="0.1" placeholder="20" required></div>
+            <div><label for="wind3">Medición 3</label><input id="wind3" type="number" min="0" max="300" step="0.1" placeholder="30" required></div>
+            <div><label for="wind4">Medición 4</label><input id="wind4" type="number" min="0" max="300" step="0.1" placeholder="40" required></div>
+            <div><label for="wind5">Medición 5</label><input id="wind5" type="number" min="0" max="300" step="0.1" placeholder="50" required></div>
+          </div>
+          <button class="btn btn-green" type="submit">Analizar mediciones <span>→</span></button>
+          <p class="form-message" id="windMessage" role="status"></p>
+        </form>
+        <div class="result-panel green-panel">
+          <span class="result-kicker">RESUMEN DE MEDICIONES</span>
+          <div class="wind-results">
+            <div><small>Promedio</small><strong id="windAverage">—</strong><span>km/h</span></div>
+            <div><small>Máximo</small><strong id="windMaximum">—</strong><span>km/h</span></div>
+          </div>
+          <div class="classification" id="windClassification">Esperando las cinco mediciones.</div>
+          <div class="threshold-info"><strong>Clasificación ficticia</strong><span>Menos de 30 km/h: baja · De 30 a 50 km/h: moderada · Más de 50 km/h: alta.</span></div>
+          <p class="helper">Esta clasificación es únicamente didáctica y no corresponde a límites operativos reales.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-section section-wrap" id="sensores">
+      <div class="module-heading">
+        <span class="module-number blue-bg">04</span>
+        <div><span class="eyebrow dark">MÓDULO 04</span><h2>Control de sensores</h2><p>Registro y validación de códigos y lecturas de sensores simulados.</p></div>
+      </div>
+      <div class="module-card">
+        <form id="sensorForm" class="maintenance-form sensor-form">
+          <div><label for="sensorCode">Código del sensor</label><input id="sensorCode" type="text" placeholder="SEN-001" maxlength="20" required><small class="field-help">Formato obligatorio: SEN- seguido de 3 números.</small></div>
+          <div><label for="sensorType">Tipo de sensor</label><select id="sensorType" required><option value="">Seleccionar tipo</option><option>Velocidad</option><option>Vibración</option><option>Temperatura</option><option>Viento</option><option>Otro</option></select></div>
+          <div><label for="sensorReading">Lectura</label><input id="sensorReading" type="number" step="any" placeholder="Ej. 25.5" required></div>
+          <button class="btn btn-blue" type="submit">Validar y registrar</button>
+        </form>
+        <p class="form-message" id="sensorMessage" role="status"></p>
+        <div class="table-heading"><div><h3>Sensores válidos</h3><p>Solo se mostrarán registros que superen las validaciones.</p></div><span class="count-pill" id="sensorCount">0 sensores</span></div>
+        <div class="table-scroll"><table><thead><tr><th>#</th><th>Código</th><th>Tipo</th><th>Lectura</th><th>Acción</th></tr></thead><tbody id="sensorTable"><tr class="empty-row"><td colspan="5">Todavía no hay sensores registrados.</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="closing-banner section-wrap">
+      <div><span class="eyebrow">SIMTELE-WEB · PROYECTO ACADÉMICO</span><h2>La tecnología también<br>se aprende practicando.</h2><p>HTML · CSS · JavaScript · DOM · Arreglos · RegExp</p></div>
+      <a class="btn btn-light" href="#inicio">Volver arriba ↑</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand footer-brand"><span class="brand-mark">MT</span><span><strong>SIMTELE<span>WEB</span></strong><small>PROYECTO EDUCATIVO</small></span></div>
+    <p>Desarrollado con fines académicos. No es una herramienta oficial de Mi Teleférico.</p>
+    <small>Programación Web I · 2026</small>
+  </footer>
+</body>
+</html>
